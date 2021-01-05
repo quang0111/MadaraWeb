@@ -1,0 +1,184 @@
+
+
+.header {
+  @include fixed();
+  width: 100%;
+  z-index: 9;
+  border-bottom: 1px solid $color-line;
+
+}
+
+.header__row {
+  @include flex(row, space-between, center);
+  padding: 1rem 0;
+
+  .header__logo {
+
+    padding: 0 10px;
+  }
+  .header__nav {
+    flex-grow: 0.5;
+    .header__nav-list {
+
+      @include flex(row, space-between, center);
+      margin-bottom: 0;
+      .header__nav-item {
+
+        position: relative;
+        &:hover {
+          .dropdown {
+            display: block;
+          }
+        }
+  
+        .header__nav-link {
+          color: $color-black;
+          font-size: 14px;
+          padding: 0.6rem;
+          font-weight: 700;
+          text-decoration: none;
+
+          text-transform: uppercase;
+          img {
+            width: 1rem;
+            margin-left: 0.3rem;
+          }
+        }
+        .dropdown {
+         
+          @include absolute($top: 4rem, $left: -35rem);
+          border-radius: 0.3rem;
+
+          transform-origin: top center;
+          border: 1px solid $color-text-green;
+          width: 70rem;
+          padding: 5px;
+          background-color: $color-white;
+          animation: rotateMenu .8s ease-in-out forwards;
+          display: none;
+          @keyframes rotateMenu {
+            0% {
+              transform: rotateX(-70deg);
+            }
+            70% {
+              transform: rotateX(40deg);
+            }
+            100% {
+              transform: rotateX(0deg);
+            }
+          }
+          .arrow {
+            width: 0;
+            height: 0;
+            border-left: 1.5rem solid transparent;
+            border-right: 1.5rem solid transparent;
+            border-bottom: 1.5rem solid $color-text-green;
+            @include absolute($top: -1.6rem, $right: 40%);
+          }
+          .dropdown__content {
+
+            @include flex(row, space-between, center);
+            .dropdown__list {
+              @include flex(column, center, flex-start);
+              padding: 0 1rem;
+              p {
+                font-size: 20px;
+                font-weight: 700;
+                padding: 5px;
+                border-bottom: 0.1rem solid black;
+              }
+              .dropdown__list-item {
+                padding: 2px ;
+                .dropdown__list-link {
+                  font-size: 1rem;
+                  text-decoration: none;
+                  color: black;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .header__icon {
+    @include flex(row, space-around);
+    flex-grow: 0.3;
+    img {
+      width: 1.5rem;
+    }
+    img:nth-child(3){
+      display: none;
+    }
+  }
+}
+@include media-breakpoint-down(lg) {
+  .header__row {
+    .header__logo {
+      padding: 10px;
+    }
+
+    .header__icon {
+    
+      img:nth-child(3){
+
+        display: block;
+      }
+    }
+  }
+}
+@include media-breakpoint-down(md) {
+  .header__row {
+    .header__nav {
+
+      animation: rotateMenu .6s ease-in-out forwards;
+      transform-origin: top center;
+      @keyframes rotateMenu {
+        0% {
+          transform: rotateX(-70deg);
+        }
+        70% {
+          transform: rotateX(10deg);
+        }
+        100% {
+          transform: rotateX(0deg);
+        }
+      }
+      order: 1;
+      flex: 1 0 100%;
+      margin-left: 2rem;
+      margin-top: 1rem;
+      .header__nav-list {
+        @include flex(column, center, flex-start);
+        .header__nav-item {
+          .dropdown {
+            @include absolute($top: 120%, $left: -5%);
+            width: 90vw;
+            .arrow {
+              border-left: 10px solid transparent;
+              border-right: 10px solid transparent;
+              border-bottom: 10px solid var(--green);
+
+              @include absolute($top: -5%, $left: 10%);
+            }
+            .dropdown__content {
+              .dropdown__list {
+                p {
+                  font-size: 1.3rem;
+                }
+                .dropdown__list-item {
+                  .dropdown__list-link {
+                    font-size: 1.3rem;
+                  }
+                }
+              }
+            }
+            z-index: 10;
+          }
+        }
+      }
+    }
+  }
+}
+

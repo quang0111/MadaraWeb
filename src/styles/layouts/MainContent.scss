@@ -1,0 +1,38 @@
+.mainContent {
+    position: relative;
+    min-height: 100%;
+    height: 600px;
+    background-image: url(../../assets/banner.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    .content {
+        position: absolute;
+        top: 65%;
+        left: 20%;
+        text-align: center;
+        .green__vera {
+            color: green;
+            font-size: 40px;
+            font-weight: 400;
+            font-style: oblique;
+            text-transform: uppercase;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+        .content__title {
+            font-size: 17px;
+            font-weight: 200;
+        }
+        .content__price {
+            font-size: 35px;
+            font-weight: 300;
+            text-transform: uppercase;
+            color: green;
+        }
+        .content__buy {
+            color: black;
+            font-size: 20px;
+            font-weight: 200;
+            text-transform: uppercase  ;
+        }
+    }
+}
